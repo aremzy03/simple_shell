@@ -53,9 +53,33 @@ return (array);
  */
 void shell_exit(char **argv)
 {
-	int status;
+	int status = 0;
 
-	status = atoi(argv[1]);
-	string_array_free(argv);
-	exit(status);
+	if (argv[1] != NULL)
+	{
+		if (is_num(argv[1]) == 0)
+		{
+			status = atoi(argv[1]);
+			string_array_free(argv);
+			exit(status);
+		}
+		else
+			perror("Error: Illegal Number\n");
+	}
+	else
+	{
+		exit(status);
+	}
+}
+/**
+ *ptrenv - prints the current working environment
+ */
+void ptrenv(void)
+{
+	int i;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		printf("%s\n", environ[i]);
+	}
 }

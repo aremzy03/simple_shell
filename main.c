@@ -14,8 +14,7 @@ int main(void)
 		command = prompt();
 		argv = split_command(command);
 		free(command);
-		if (command_exec(argv, path_array) == -1)
-			perror("execution failed");
+		command_exec(argv, path_array);
 		string_array_free(argv);
 	}
 	string_array_free(path_array);

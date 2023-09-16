@@ -72,29 +72,36 @@ int command_exec(char **argv, char **path_array)
 	{
 		shell_exit(argv);
 	}
-	command_path = search_command_path(argv[0], path_array);
-
-	if (command_path != NULL)
+	else if (strcmp(argv[0], "env") == 0)
 	{
-		if (command_path != argv[0])
-			argv = replace_argv0(argv, command_path);
-		child_pid = fork();
-		if (child_pid == 0)
+		ptrenv();
+	}
+	else
+	{
+		command_path = search_command_path(argv[0], path_array);
+		
+		if (command_path != NULL)
 		{
-			if (execve(argv[0], argv, NULL) == -1)
-				return (-1);
-			exit(0);
-		}
-		else if (child_pid > 0)
-		{
-			terminated_pid = waitpid(child_pid, &status, 0);
-			if (terminated_pid == child_pid)
+			if (command_path != argv[0])
+				argv = replace_argv0(argv, command_path);
+			child_pid = fork();
+			if (child_pid == 0)
 			{
-				return (0);
+				if (execve(argv[0], argv, NULL) == -1)
+					return (-1);
+				exit(0);
 			}
+			else if (child_pid > 0)
+			{
+				terminated_pid = waitpid(child_pid, &status, 0);
+				if (terminated_pid == child_pid)
+				{
+					return (0);
+				}
+			}
+			else
+				perror("fork failed\n");
 		}
-		else
-			perror("fork failed\n");
 	}
 	return (-1);
 }
