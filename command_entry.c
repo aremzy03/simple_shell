@@ -19,11 +19,6 @@ char *prompt(void)
 		free(command);
 		exit(0);
 	}
-	if (strncmp(command, "exit", 4) == 0 || strncmp(command, "exit ", 5) == 0)
-	{
-		free(command);
-		exit(0);
-	}
 	return (command);
 }
 
@@ -51,4 +46,16 @@ char **split_command(char *command)
 	array[i] = NULL;
 
 return (array);
+}
+/**
+ *shell_exit - exit the program with a specified status
+ *@argv: the status
+ */
+void shell_exit(char **argv)
+{
+	int status;
+
+	status = atoi(argv[1]);
+	string_array_free(argv);
+	exit(status);
 }

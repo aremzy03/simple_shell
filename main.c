@@ -6,7 +6,6 @@
 */
 int main(void)
 {
-	int i = 0;
 	char *command, **argv = NULL, **path_array;
 
 	path_array = split_path();
@@ -14,18 +13,12 @@ int main(void)
 	{
 		command = prompt();
 		argv = split_command(command);
-		i = 0;
-		while (argv[i] != NULL)
-		{
-			printf("%s\n", argv[i]);
-			i++;
-		}
+		free(command);
 		if (command_exec(argv, path_array) == -1)
 			perror("execution failed");
 		string_array_free(argv);
-		free(command);
 	}
 	string_array_free(path_array);
 	free(command);
-return (0);
+	return (0);
 }

@@ -17,5 +17,5 @@ int dierctory_count(char *path);
 char **split_path(void);
 char **replace_argv0(char **argv, char *full_path);
 void string_array_free(char **array);
-
+void shell_exit(char **argv);
 #endif
