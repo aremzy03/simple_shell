@@ -79,7 +79,6 @@ int command_exec(char **argv, char **path_array)
 	else
 	{
 		command_path = search_command_path(argv[0], path_array);
-		
 		if (command_path != NULL)
 		{
 			if (command_path != argv[0])
