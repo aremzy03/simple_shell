@@ -36,7 +36,7 @@ char *search_command_path(char *command, char **directories_array)
 		free(command_path);
 		i++;
 	}
-	printf("./%s: %i: %s: not found\n",__progname, cmd_count, command);
+	printf("./%s: %i: %s: not found\n", __progname, cmd_count, command);
 	return (NULL);
 
 }

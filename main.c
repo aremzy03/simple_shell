@@ -4,7 +4,7 @@
  * main - main program where the magic happens
  * Return: 0 on sucess -1 on errors
 */
-int cmd_count = 0;/*declaring the global variable*/
+
 int main(void)
 {
 	char *command, **argv = NULL, **path_array;
