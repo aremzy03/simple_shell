@@ -23,4 +23,5 @@ void string_array_free(char **array);
 void shell_exit(char **argv);
 void ptrenv(void);
 int is_num(char *argv);
+int ptr_str(char *str);
 #endif

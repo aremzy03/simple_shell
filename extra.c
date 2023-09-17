@@ -16,3 +16,18 @@ int is_num(char *argv)
 	}
 	return (0);
 }
+/**
+ *ptr_str - prints a string
+ *@str: the string to be printed
+ *
+ *Return: always zero
+ */
+int ptr_str(char *str)
+{
+	int i;
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
+	return (0);
+}
