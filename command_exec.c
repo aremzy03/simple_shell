@@ -4,12 +4,15 @@
  * search_command_path - search for the command
  * @command: command to be searched for
  * @directories_array: an array of the directories in the path variable
+ * @cmd_count: number of the command
+ * @av: name of the program
  * Description: search for the command in the path
  * environment variable
  * Return: path to the command if found
  * NULL if not found
 */
-char *search_command_path(char *command, char **directories_array)
+char *search_command_path(char *command,
+char **directories_array, int cmd_count, char *av)
 {
 	char *command_path;
 	int i = 0;
@@ -36,7 +39,7 @@ char *search_command_path(char *command, char **directories_array)
 		free(command_path);
 		i++;
 	}
-	printf("./%s: %i: %s: not found\n", __progname, cmd_count, command);
+	print_err(cmd_count, "not found", command, av);
 	return (NULL);
 
 }
@@ -60,9 +63,12 @@ char **replace_argv0(char **argv, char *full_path)
  * command_exec - executes the command in a child process
  * @argv: array of the command and and it's arguments
  * @path_array: the array of directories in path variable
+ * @prg_name: program name
+ * @cmd_count: command number
  * Return: 0 on success -1 on error
 */
-int command_exec(char **argv, char **path_array)
+int command_exec(char **argv, char **path_array,
+char *prg_name, int cmd_count)
 {
 	int status;
 	char *command_path;
@@ -70,7 +76,7 @@ int command_exec(char **argv, char **path_array)
 
 	if (strcmp(argv[0], "exit") == 0)
 	{
-		shell_exit(argv);
+		shell_exit(argv, prg_name, cmd_count);
 	}
 	else if (strcmp(argv[0], "env") == 0)
 	{
@@ -78,7 +84,8 @@ int command_exec(char **argv, char **path_array)
 	}
 	else
 	{
-		command_path = search_command_path(argv[0], path_array);
+		command_path = search_command_path(argv[0],
+		path_array, cmd_count,  prg_name);
 		if (command_path != NULL)
 		{
 			if (command_path != argv[0])

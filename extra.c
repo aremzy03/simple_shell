@@ -17,18 +17,14 @@ int is_num(char *argv)
 	return (0);
 }
 /**
- *ptr_str - prints a string
- *@str: the string to be printed
- *
- *Return: always zero
- */
-int ptr_str(char *str)
-{
-	int i;
+ * print_err - prints an error message with specified arguments
+ * @cmd_count: number of the command
+ * @msg: msg to be printed
+ * @command: command name
+ * @av: program name
+*/
 
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		_putchar(str[i]);
-	}
-	return (0);
+void print_err(int cmd_count, char *msg, char *command, char *av)
+{
+	fprintf(stderr, "%s: %d: %s: %s\n", av, cmd_count, command, msg);
 }
