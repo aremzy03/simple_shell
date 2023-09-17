@@ -64,7 +64,7 @@ void shell_exit(char **argv)
 			exit(status);
 		}
 		else
-			perror("Error: Illegal Number\n");
+			perror("Error: ");
 	}
 	else
 	{
