@@ -1,4 +1,5 @@
 **0x16 C-Simple Shell**
+made by Ajoued Senoussi and Abdulmalik Aremu
 
 **0 - Code passes Betty checks**
 
