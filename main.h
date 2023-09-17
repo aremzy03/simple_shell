@@ -13,6 +13,7 @@
 
 extern char **environ;
 extern int cmd_count;/*A global variable*/
+extern char *__progname;/*the program name*/
 /*******FUNCTIONS*******/
 char *prompt(void);
 char **split_command(char *command);
