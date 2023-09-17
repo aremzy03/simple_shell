@@ -12,6 +12,7 @@
 #include <errno.h>
 
 extern char **environ;
+extern int cmd_count;/*A global variable*/
 /*******FUNCTIONS*******/
 char *prompt(void);
 char **split_command(char *command);
@@ -25,4 +26,5 @@ void shell_exit(char **argv);
 void ptrenv(void);
 int is_num(char *argv);
 int ptr_str(char *str);
+int _putchar(char c);
 #endif

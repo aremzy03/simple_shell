@@ -36,7 +36,7 @@ char *search_command_path(char *command, char **directories_array)
 		free(command_path);
 		i++;
 	}
-	printf("command %s: NOT FOUND\n", command);
+	printf("./hsh: %i: %s: not found\n", cmd_count, command);
 	return (NULL);
 
 }
