@@ -14,6 +14,7 @@ char *search_command(char *command)
 
 	if (access(command, X_OK) == 0)
 	{
+		free_array(directories);
 		return (command);
 	}
 

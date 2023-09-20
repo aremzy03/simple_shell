@@ -51,6 +51,5 @@ void command_exec(char **args, char *prg_name, int cmd_count)
 	}
 	else
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
-	
-	free(full_path);
+
 }
