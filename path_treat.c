@@ -3,18 +3,17 @@
 /**
  * search_command - searches for a command in the path variable
  * @command: is the command we are looking for
+ * @directories: array of path variable directories
  * Return: path to the full command or null if not found
 */
-char *search_command(char *command)
+char *search_command(char *command, char **directories)
 {
-	char **directories = split_path();
 	char *full_path;
 	size_t commandsize = strlen(command), arraysize;
 	int i = 0;
 
 	if (access(command, X_OK) == 0)
 	{
-		free_array(directories);
 		return (command);
 	}
 
@@ -27,13 +26,12 @@ char *search_command(char *command)
 		strcat(full_path, command);
 		if (access(full_path, X_OK) == 0)
 		{
-			free_array(directories);
+			printf("%s\n", full_path);
 			return (full_path);
 		}
 		free(full_path);
 		i++;
 	}
-	free_array(directories);
 	return (NULL);
 }
 
@@ -66,6 +64,5 @@ char **split_path(void)
 		i++;
 	}
 	directories[i] = NULL;
-
 	return (directories);
 }

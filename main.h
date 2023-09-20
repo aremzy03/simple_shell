@@ -13,9 +13,10 @@ extern char **environ;
 
 char *prompt(void);
 char **split_command(char *command);
-void command_exec(char **args, char *prg_name, int cmd_count);
+void command_exec(char **args, char *prg_name,
+int cmd_count, char **path_array);
 void free_array(char **array);
-char *search_command(char *command);
+char *search_command(char *command, char **directories);
 char **split_path(void);
 char **replac_arg0(char **args, char *full_path);
 

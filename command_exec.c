@@ -19,15 +19,17 @@ char **replac_arg0(char **args, char *full_path)
  * @args: command and it's arguments
  * @prg_name: program name
  * @cmd_count: number of the command
+ * @path_array: array of path variable directories
  * Return: nothing
 */
-void command_exec(char **args, char *prg_name, int cmd_count)
+void command_exec(char **args, char *prg_name,
+int cmd_count, char **path_array)
 {
 	char *full_path;
 	pid_t child_pid;
 	int status;
 
-	full_path = search_command(args[0]);
+	full_path = search_command(args[0], path_array);
 	if (full_path != NULL)
 	{
 		if (args[0] != full_path)
