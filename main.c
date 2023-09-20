@@ -18,7 +18,7 @@ int main(int ac, char **av)
 	{
 		command = NULL;
 		command = prompt();
-		if (command != NULL || command[0] != '\0')
+		if (command != NULL && command[0] != '\0')
 		{
 			argv = split_command(command);
 			free(command);
