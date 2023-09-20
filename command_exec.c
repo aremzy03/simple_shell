@@ -39,7 +39,10 @@ char **directories_array, int cmd_count, char *av)
 		free(command_path);
 		i++;
 	}
-	print_err(cmd_count, "not found", command, av);
+	cmd_count = cmd_count;
+	av = av;
+	/*print_err(cmd_count, "not found", command, av);*/
+	fprintf(stderr, "%s: No such file or directory\n", av);
 	return (NULL);
 
 }
@@ -93,7 +96,7 @@ char *prg_name, int cmd_count)
 			child_pid = fork();
 			if (child_pid == 0)
 			{
-				if (execve(argv[0], argv, NULL) == -1)
+				if (execve(argv[0], argv, environ) == -1)
 					return (-1);
 				exit(0);
 			}

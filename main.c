@@ -10,18 +10,23 @@
 int main(int ac, char **av)
 {
 	int cmd_count = 0;
-	char *command, **argv = NULL, **path_array;
+	char *command = NULL, **argv = NULL, **path_array;
 
 	ac = ac;
 	path_array = split_path();
 	while (1)
 	{
+		command = NULL;
 		command = prompt();
-		argv = split_command(command);
-		free(command);
-		cmd_count++;
-		command_exec(argv, path_array, av[0], cmd_count);
-		string_array_free(argv);
+		if (command != NULL && command[0] != '\0')
+		{
+			argv = split_command(command);
+			free(command);
+			cmd_count++;
+			command_exec(argv, path_array, av[0], cmd_count);
+			string_array_free(argv);
+		}
+
 	}
 	string_array_free(path_array);
 	free(command);
