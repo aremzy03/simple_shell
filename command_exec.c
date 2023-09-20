@@ -5,7 +5,7 @@
  * @args: the array of the command and it's arguments
  * @full_path: string of the full path of the command
  * Return: the arrayw of the command with the full path
-*/
+ */
 char **replac_arg0(char **args, char *full_path)
 {
 	free(args[0]);
@@ -21,9 +21,9 @@ char **replac_arg0(char **args, char *full_path)
  * @cmd_count: number of the command
  * @path_array: array of path variable directories
  * Return: nothing
-*/
+ */
 void command_exec(char **args, char *prg_name,
-int cmd_count, char **path_array)
+				  int cmd_count, char **path_array)
 {
 	char *full_path;
 	pid_t child_pid;
@@ -53,11 +53,11 @@ int cmd_count, char **path_array)
 	}
 	else
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
-
 }
 /**
  * ptr_env - prints the current working environment
-*/
+ * @env: thwe environment variable
+ */
 void ptr_env(char **env)
 {
 	int i;
