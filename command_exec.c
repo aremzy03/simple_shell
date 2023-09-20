@@ -13,7 +13,19 @@ char **replac_arg0(char **args, char *full_path)
 
 	return (args);
 }
+void change_dir(char **args)
+{
+	char *pwd, *home, *buff = NULL;
 
+	home = getenv("HOME");
+	if (args[1] == NULL)
+		chdir(home);
+	else	
+		chdir(args[1]);
+	pwd = getcwd(buff, 0);
+	setenv("PWD", pwd, 1);
+	free(buff);
+}
 /**
  * command_exec - executes a command
  * @args: command and it's arguments
@@ -28,7 +40,12 @@ void command_exec(char **args, char *prg_name,
 	char *full_path;
 	pid_t child_pid;
 	int status;
-
+	
+	if (strncmp(args[0], "cd", 2) == 0)
+	{
+		change_dir(args);
+		return;
+	}
 	full_path = search_command(args[0], path_array);
 	if (full_path != NULL)
 	{
