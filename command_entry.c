@@ -14,7 +14,7 @@ char *prompt(void)
 	/*checks if file opened in interractive mode to print the dollar sign*/
 	if (isatty(STDIN_FILENO) == 1)
 		printf("($) ");
-	
+
 	size = getline(&command, &n, stdin);
 
 	if (feof(stdin) != 0)
