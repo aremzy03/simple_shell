@@ -11,7 +11,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *command = NULL, **args;
-	int cmd_count = 0;
+	int cmd_count = 1;
 	char **directories = split_path();
 	/*prevent the unused variable error temporarly*/
 	ac = ac;
