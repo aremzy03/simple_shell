@@ -96,7 +96,7 @@ char *prg_name, int cmd_count)
 			child_pid = fork();
 			if (child_pid == 0)
 			{
-				if (execve(argv[0], argv, NULL) == -1)
+				if (execve(argv[0], argv, environ) == -1)
 					return (-1);
 				exit(0);
 			}
