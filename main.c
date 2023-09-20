@@ -1,17 +1,16 @@
 #include "main.h"
 
-
 /**
  * main - main program
  * @ac: arguments count
  * @av: arguments array
  * @env: environment vaiables array
  * Return: 0 if succes -1 if error
-*/
+ */
 int main(int ac, char **av, char **env)
 {
 	char *command = NULL, **args;
-	int cmd_count = 1;
+	int cmd_count = 0;
 	char **directories = split_path();
 	/*prevent the unused variable error temporarly*/
 	ac = ac;
@@ -36,5 +35,5 @@ int main(int ac, char **av, char **env)
 	}
 	free(command);
 	free_array(directories);
-return (0);
+	return (0);
 }
