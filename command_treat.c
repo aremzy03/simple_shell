@@ -17,7 +17,6 @@ char *prompt(void)
 	if (feof(stdin) != 0)
 	{
 		free(command);
-		/*putchar('\n');*/
 		exit(0);
 	}
 	if (size == 1 && command[size - 1] == '\n')
