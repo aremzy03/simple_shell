@@ -14,6 +14,7 @@ char *search_command(char *command)
 
 	if (access(command, X_OK) == 0)
 	{
+		free_array(directories);
 		return (command);
 	}
 
@@ -22,7 +23,7 @@ char *search_command(char *command)
 		arraysize = strlen(directories[i]);
 		full_path = malloc(sizeof(char) * (commandsize + arraysize + 2));
 		strcpy(full_path, directories[i]);
-		strcat(full_path,"/");
+		strcat(full_path, "/");
 		strcat(full_path, command);
 		if (access(full_path, X_OK) == 0)
 		{
@@ -48,7 +49,7 @@ char **split_path(void)
 	path = getenv("PATH");
 	if (path == NULL)
 		return (NULL);
-	while(path[i] != '\0')
+	while (path[i] != '\0')
 	{
 		if (path[i] == ':')
 			count++;
