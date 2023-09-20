@@ -1,34 +1,36 @@
 #include "main.h"
 
+
 /**
- * main - main program where the magic happens
+ * main - main program
  * @ac: arguments count
- * @av: program name and arguments array
- * Return: 0 on sucess -1 on errors
+ * @av: arguments array
+ * @env: environment vaiables array
+ * Return: 0 if succes -1 if error
 */
-
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
+	char *command = NULL, **args;
 	int cmd_count = 0;
-	char *command = NULL, **argv = NULL, **path_array;
 
+	/*prevent the unused variable error temporarly*/
 	ac = ac;
-	path_array = split_path();
+	av = av;
+	env = env;
+
 	while (1)
 	{
-		command = NULL;
 		command = prompt();
+
 		if (command != NULL && command[0] != '\0')
 		{
-			argv = split_command(command);
+			args = split_command(command);
+			command_exec(args, av[0], cmd_count);
 			free(command);
 			cmd_count++;
-			command_exec(argv, path_array, av[0], cmd_count);
-			string_array_free(argv);
+			free_array(args);
 		}
-
 	}
-	string_array_free(path_array);
 	free(command);
-	return (0);
+return (0);
 }
