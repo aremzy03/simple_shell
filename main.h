@@ -13,7 +13,7 @@ extern char **environ;
 
 char *prompt(void);
 char **split_command(char *command);
-void command_exec(char **args);
+void command_exec(char **args, char *prg_name, int cmd_count);
 void free_array(char **array);
 
 #endif

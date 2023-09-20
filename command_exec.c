@@ -6,7 +6,7 @@
  * @prg_name: program name
  * Return: nothing
 */
-void command_exec(char **args)
+void command_exec(char **args, char *prg_name, int cmd_count)
 {
 	/*char *envp[] = {NULL};*/
 	pid_t child_pid;
@@ -30,5 +30,7 @@ void command_exec(char **args)
 			wait(&status);
 		}
 	}
+	else
+		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
 	
 }

@@ -11,6 +11,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *command = NULL, **args;
+	int cmd_count = 0;
 
 	/*prevent the unused variable error temporarly*/
 	ac = ac;
@@ -21,8 +22,9 @@ int main(int ac, char **av, char **env)
 	{
 		command = prompt();
 		args = split_command(command);
-		command_exec(args);
+		command_exec(args, av[0], cmd_count);
 		free(command);
+		cmd_count++;
 		free_array(args);
 	}
 	free(command);
