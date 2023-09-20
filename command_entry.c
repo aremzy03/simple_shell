@@ -16,7 +16,10 @@ char *prompt(void)
 		printf("($) ");
 	size = getline(&command, &n, stdin);
 	if (size == 1 && command[size - 1] == '\n')
+		{
+		free(command);
 		return (NULL);
+		}
 	command[size - 1] = '\0';
 	if (feof(stdin) != 0)
 	{

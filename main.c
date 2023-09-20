@@ -26,11 +26,7 @@ int main(int ac, char **av)
 			command_exec(argv, path_array, av[0], cmd_count);
 			string_array_free(argv);
 		}
-		else
-		{
-			free(command);
-			continue;
-		}
+		
 	}
 	string_array_free(path_array);
 	free(command);
