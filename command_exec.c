@@ -39,8 +39,7 @@ char **directories_array, int cmd_count, char *av)
 		free(command_path);
 		i++;
 	}
-	cmd_count = cmd_count;
-	av = av;
+
 	/*print_err(cmd_count, "not found", command, av);*/
 	fprintf(stderr, "%s: %d: %s: not found\n", av, cmd_count, command);
 	return (NULL);
@@ -86,20 +85,15 @@ char *prg_name, int cmd_count)
 		child_pid = fork();
 		if (child_pid == 0)
 		{
-			if (execve(argv[0], argv, environ) == -1)
-				return (-1);
-			exit(0);
+			execve(argv[0], argv, environ)
 		}
-		else if (child_pid > 0)
+		else if (child_pid < 0)
 		{
-			terminated_pid = waitpid(child_pid, &status, 0);
-			if (terminated_pid == child_pid)
-			{
-				return (0);
-			}
+			perror("fork failed\n");
+			exit(EXIT_FAILURE);
 		}
 		else
-			perror("fork failed\n");
+			wait(&status)
 	}
 
 	return (-1);
