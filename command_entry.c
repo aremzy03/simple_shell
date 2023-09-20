@@ -24,6 +24,7 @@ char *prompt(void)
 	if (feof(stdin) != 0)
 	{
 		free(command);
+		putchar('\n');
 		exit(0);
 	}
 	return (command);
