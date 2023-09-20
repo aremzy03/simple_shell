@@ -3,7 +3,7 @@
 /**
  * prompt - displays the prompt if interractive and reads the command
  * Return: the command if correct, null if nothing typed
-*/
+ */
 char *prompt(void)
 {
 	char *command = NULL;
@@ -19,6 +19,11 @@ char *prompt(void)
 		free(command);
 		return (NULL);
 	}
+	if (strncmp(command, "exit", 4) == 0)
+	{
+		free(command);
+		return (NULL);
+	}
 
 	command[size - 1] = '\0';
 	return (command);
@@ -29,7 +34,7 @@ char *prompt(void)
  * in an array of strings
  * @command: command to be treated
  * Return: a pointer to the array of strings
-*/
+ */
 char **split_command(char *command)
 {
 	char *token = NULL, **array = NULL;
@@ -47,13 +52,13 @@ char **split_command(char *command)
 	array = realloc(array, sizeof(char *) * (i + 1));
 	array[i] = NULL;
 
-return (array);
+	return (array);
 }
 
 /**
  * free_array - frees an array of strings
  * @array: array to  be treated
-*/
+ */
 void free_array(char **array)
 {
 	int i = 0;

@@ -5,7 +5,7 @@
  * @command: is the command we are looking for
  * @directories: array of path variable directories
  * Return: path to the full command or null if not found
-*/
+ */
 char *search_command(char *command, char **directories)
 {
 	char *full_path;
@@ -26,7 +26,6 @@ char *search_command(char *command, char **directories)
 		strcat(full_path, command);
 		if (access(full_path, X_OK) == 0)
 		{
-			printf("%s\n", full_path);
 			return (full_path);
 		}
 		free(full_path);
@@ -38,7 +37,7 @@ char *search_command(char *command, char **directories)
 /**
  * split_path - splits the path string into directories
  * Return: an array of directories of the path variable
-*/
+ */
 char **split_path(void)
 {
 	int count = 1, i = 0;
