@@ -24,7 +24,7 @@ int main(int ac, char **av, char **env)
 			break;
 		if (strncmp(command, "env", 3) == 0)
 		{
-			ptr_env();
+			ptr_env(env);
 			free(command);
 			continue;
 		}

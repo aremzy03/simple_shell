@@ -58,12 +58,12 @@ int cmd_count, char **path_array)
 /**
  * ptr_env - prints the current working environment
 */
-void ptr_env(void)
+void ptr_env(char **env)
 {
 	int i;
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (i = 0; env[i] != NULL; i++)
 	{
-		printf("%s\n", environ[i]);
+		printf("%s\n", env[i]);
 	}
 }

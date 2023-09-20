@@ -19,5 +19,5 @@ void free_array(char **array);
 char *search_command(char *command, char **directories);
 char **split_path(void);
 char **replac_arg0(char **args, char *full_path);
-void ptr_env(void);
+void ptr_env(char **env);
 #endif
