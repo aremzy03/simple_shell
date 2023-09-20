@@ -32,12 +32,12 @@ void command_exec(char **args, char *prg_name, int cmd_count)
 	{
 		if (args[0] != full_path)
 			replac_arg0(args, full_path);
+
 		child_pid = fork();
 
 		if (child_pid == 0)
 		{
 			execve(args[0], args, environ);
-			free(full_path)
 		}
 		else if (child_pid < 0)
 		{
@@ -51,4 +51,6 @@ void command_exec(char **args, char *prg_name, int cmd_count)
 	}
 	else
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
+	
+	free(full_path);
 }

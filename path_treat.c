@@ -55,7 +55,6 @@ char **split_path(void)
 		i++;
 	}
 
-	printf("%d\n", count);
 	directories = malloc(sizeof(char *) * (count + 1));
 	i = 0;
 	token = strtok(path, ":");
@@ -66,5 +65,6 @@ char **split_path(void)
 		i++;
 	}
 	directories[i] = NULL;
+
 	return (directories);
 }
