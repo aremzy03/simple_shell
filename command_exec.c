@@ -4,6 +4,7 @@
  * command_exec - executes a command
  * @args: command and it's arguments
  * @prg_name: program name
+ * @cmd_count: number of the command
  * Return: nothing
 */
 void command_exec(char **args, char *prg_name, int cmd_count)
@@ -32,5 +33,4 @@ void command_exec(char **args, char *prg_name, int cmd_count)
 	}
 	else
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
-	
 }

@@ -21,11 +21,15 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		command = prompt();
-		args = split_command(command);
-		command_exec(args, av[0], cmd_count);
-		free(command);
-		cmd_count++;
-		free_array(args);
+
+		if (command != NULL && command[0] != '\0')
+		{
+			args = split_command(command);
+			command_exec(args, av[0], cmd_count);
+			free(command);
+			cmd_count++;
+			free_array(args);
+		}
 	}
 	free(command);
 return (0);

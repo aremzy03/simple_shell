@@ -54,6 +54,11 @@ char **split_command(char *command)
 
 return (array);
 }
+
+/**
+ * free_array - frees an array of strings
+ * @array: array to  be treated
+*/
 void free_array(char **array)
 {
 	int i = 0;
