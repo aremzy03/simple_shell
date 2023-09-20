@@ -20,11 +20,13 @@ void change_dir(char **args)
 	home = getenv("HOME");
 	if (args[1] == NULL)
 		chdir(home);
-	else	
+	else
 		chdir(args[1]);
 	pwd = getcwd(buff, 0);
 	setenv("PWD", pwd, 1);
 	free(buff);
+	free(pwd);
+	free(home);
 }
 /**
  * command_exec - executes a command
@@ -40,7 +42,7 @@ void command_exec(char **args, char *prg_name,
 	char *full_path;
 	pid_t child_pid;
 	int status;
-	
+
 	if (strncmp(args[0], "cd", 2) == 0)
 	{
 		change_dir(args);
