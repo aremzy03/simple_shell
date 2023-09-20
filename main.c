@@ -22,6 +22,12 @@ int main(int ac, char **av, char **env)
 		command = prompt();
 		if (command == NULL)
 			break;
+		if (strncmp(command, "env", 3) == 0)
+		{
+			ptr_env();
+			free(command);
+			continue;
+		}
 		if (command[0] != '\0')
 		{
 			args = split_command(command);

@@ -55,3 +55,15 @@ int cmd_count, char **path_array)
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
 
 }
+/**
+ * ptr_env - prints the current working environment
+*/
+void ptr_env(void)
+{
+	int i;
+
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		printf("%s\n", environ[i]);
+	}
+}
