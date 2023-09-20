@@ -16,9 +16,10 @@ char *prompt(void)
 	size = getline(&command, &n, stdin);
 	if (feof(stdin) != 0)
 	{
+		free(command);
 		return (NULL);
 	}
-	
+
 	command[size - 1] = '\0';
 	return (command);
 }
