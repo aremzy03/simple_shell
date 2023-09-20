@@ -42,7 +42,7 @@ char **directories_array, int cmd_count, char *av)
 	cmd_count = cmd_count;
 	av = av;
 	/*print_err(cmd_count, "not found", command, av);*/
-	fprintf(stderr, "%s: No such file or directory\n", av);
+	fprintf(stderr, "%s: %d: %s: not found\n", av, cmd_count, command);
 	return (NULL);
 
 }
