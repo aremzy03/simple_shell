@@ -46,5 +46,6 @@ int main(int ac, char **av, char **env)
 	}
 	free(command);
 	free_array(directories);
+	exit(0);
 	return (0);
 }
