@@ -46,10 +46,8 @@ int main(int ac, char **av, char **env)
 	}
 	free(command);
 	free_array(directories);
-	printf("%d\n", exec_stat);
-	if (exec_stat == -1 && isatty(STDIN_FILENO) == 0)
+	if (exec_stat == 512 && isatty(STDIN_FILENO) == 0)
 		exit(2);
-	else
-		exit(0);
+	exit(0);
 	return (0);
 }

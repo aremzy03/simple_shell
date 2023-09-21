@@ -74,6 +74,7 @@ int command_exec(char **args, char *prg_name,
 		else
 		{
 			wait(&status);
+			return (status);
 		}
 	}
 	else
