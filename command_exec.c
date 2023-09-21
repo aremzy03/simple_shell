@@ -17,7 +17,7 @@ char **replac_arg0(char **args, char *full_path)
 /**
  * change_dir - changes directory
  * @args: directory path
-*/
+ */
 void change_dir(char **args)
 {
 	char *pwd, *home, *buff = NULL;
@@ -39,10 +39,11 @@ void change_dir(char **args)
  * @prg_name: program name
  * @cmd_count: number of the command
  * @path_array: array of path variable directories
- * Return: nothing
+ * Return: return 0 on success -2 if it fails in non-interactive
+ * and -1 in interactve
  */
-void command_exec(char **args, char *prg_name,
-				  int cmd_count, char **path_array)
+int command_exec(char **args, char *prg_name,
+				 int cmd_count, char **path_array)
 {
 	char *full_path;
 	pid_t child_pid;
@@ -51,7 +52,7 @@ void command_exec(char **args, char *prg_name,
 	if (strncmp(args[0], "cd", 2) == 0)
 	{
 		change_dir(args);
-		return;
+		return (0);
 	}
 	full_path = search_command(args[0], path_array);
 	if (full_path != NULL)
@@ -76,7 +77,11 @@ void command_exec(char **args, char *prg_name,
 		}
 	}
 	else
+	{
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
+		return (-1);
+	}
+	return (0);
 }
 /**
  * ptr_env - prints the current working environment
