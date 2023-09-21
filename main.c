@@ -10,7 +10,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *command = NULL, **args;
-	int cmd_count = 0;
+	int cmd_count = 0, exec_stat;
 	char **directories = split_path();
 	/*prevent the unused variable error temporarly*/
 	ac = ac;
@@ -34,7 +34,7 @@ int main(int ac, char **av, char **env)
 		if (command[0] != '\0')
 		{
 			args = split_command(command);
-			command_exec(args, av[0], cmd_count, directories);
+			exec_stat = command_exec(args, av[0], cmd_count, directories);
 			free(command);
 			cmd_count++;
 			free_array(args);
@@ -44,7 +44,9 @@ int main(int ac, char **av, char **env)
 	}
 	free(command);
 	free_array(directories);
-
-	exit(0);
+	if (exec_stat != 0 && isatty(STDIN_FILENO) == 0)
+		exit(exec_stat);
+	else
+		exit(0);
 	return (0);
 }

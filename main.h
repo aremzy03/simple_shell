@@ -13,8 +13,8 @@ extern char **environ;
 
 char *prompt(void);
 char **split_command(char *command);
-void command_exec(char **args, char *prg_name,
-int cmd_count, char **path_array);
+int command_exec(char **args, char *prg_name,
+				 int cmd_count, char **path_array);
 void free_array(char **array);
 char *search_command(char *command, char **directories);
 char **split_path(void);
@@ -22,4 +22,5 @@ char **replac_arg0(char **args, char *full_path);
 void ptr_env(char **env);
 void change_dir(char **args);
 int is_void(char *command);
+int wait_pid(pid_t pid, int status);
 #endif

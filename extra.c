@@ -16,3 +16,22 @@ int is_void(char *command)
 	}
 	return (0);
 }
+/**
+ * wait_pid - returns the exit status
+ * @pid: the process id
+ * @status: the status of the process
+ *
+ * Return: returns the exit_status on success
+*/
+int wait_pid(pid_t pid, int status)
+{
+	int ex_status = 0;
+
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+	{
+		ex_status = WEXITSTATUS(status);
+		return (ex_status);
+	}
+	return (0);
+}
