@@ -22,6 +22,11 @@ int main(int ac, char **av, char **env)
 		command = prompt();
 		if (command == NULL)
 			break;
+		if (is_void(command) == 0)
+		{
+			free(command);
+			continue;
+		}
 		if (strncmp(command, "env", 3) == 0)
 		{
 			ptr_env(env);
