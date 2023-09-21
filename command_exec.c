@@ -13,6 +13,11 @@ char **replac_arg0(char **args, char *full_path)
 
 	return (args);
 }
+
+/**
+ * change_dir - changes directory
+ * @args: directory path
+*/
 void change_dir(char **args)
 {
 	char *pwd, *home, *buff = NULL;

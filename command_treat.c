@@ -24,7 +24,7 @@ char *prompt(void)
 		free(command);
 		return (NULL);
 	}
-	
+
 	command[size - 1] = '\0';
 	return (command);
 }
