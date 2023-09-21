@@ -14,8 +14,6 @@ int main(int ac, char **av, char **env)
 	char **directories = split_path();
 	/*prevent the unused variable error temporarly*/
 	ac = ac;
-	av = av;
-	env = env;
 
 	while (1)
 	{
