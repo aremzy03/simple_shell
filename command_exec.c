@@ -64,12 +64,7 @@ int command_exec(char **args, char *prg_name,
 
 		if (child_pid == 0)
 		{
-			if (execve(args[0], args, environ) == -1)
-			{
-				if (isatty(STDIN_FILENO) == 0)
-					return (-2);
-				return (-1);
-			}
+			execve(args[0], args, environ);
 		}
 		else if (child_pid < 0)
 		{

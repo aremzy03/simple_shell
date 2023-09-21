@@ -40,15 +40,14 @@ int main(int ac, char **av, char **env)
 			free(command);
 			cmd_count++;
 			free_array(args);
-			if (exec_stat == -2)
-				break;
 		}
 		else
 			free(command);
 	}
 	free(command);
 	free_array(directories);
-	if (exec_stat == -2)
+	printf("%d\n", exec_stat);
+	if (exec_stat == -1 && isatty(STDIN_FILENO) == 0)
 		exit(2);
 	else
 		exit(0);
