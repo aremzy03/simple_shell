@@ -10,7 +10,7 @@
 int main(int ac, char **av, char **env)
 {
 	char *command = NULL, **args;
-	int cmd_count = 0, exec_stat;
+	int cmd_count = 0, exec_stat = 0;
 	char **directories = split_path();
 	/*prevent the unused variable error temporarly*/
 	ac = ac;
