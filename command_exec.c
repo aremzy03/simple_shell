@@ -64,7 +64,8 @@ int command_exec(char **args, char *prg_name,
 
 		if (child_pid == 0)
 		{
-			execve(args[0], args, environ);
+			if (execve(args[0], args, environ) == -1)
+				return (-1);
 		}
 		else if (child_pid < 0)
 		{
@@ -79,7 +80,6 @@ int command_exec(char **args, char *prg_name,
 	else
 	{
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
-		return (-1);
 	}
 	return (0);
 }
