@@ -42,7 +42,7 @@ void change_dir(char **args)
  * Return: return 0 on success -2 if it fails in non-interactive
  * and -1 in interactve
  */
-int command_exec(char **args, char *prg_name,
+void command_exec(char **args, char *prg_name,
 				 int cmd_count, char **path_array)
 {
 	char *full_path;
@@ -52,7 +52,7 @@ int command_exec(char **args, char *prg_name,
 	if (strncmp(args[0], "cd", 2) == 0)
 	{
 		change_dir(args);
-		return (0);
+		return;
 	}
 	full_path = search_command(args[0], path_array);
 	if (full_path != NULL)
@@ -74,14 +74,12 @@ int command_exec(char **args, char *prg_name,
 		else
 		{
 			wait(&status);
-			return (status);
 		}
 	}
 	else
 	{
 		fprintf(stderr, "%s: %d: %s: not found\n", prg_name, cmd_count, args[0]);
 	}
-	return (0);
 }
 /**
  * ptr_env - prints the current working environment
